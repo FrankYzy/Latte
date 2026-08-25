@@ -1,12 +1,12 @@
 # dataset
 dataset: "ffs"
 
-data_path: "/path/to/datasets/preprocess_ffs/train/videos/" # s
-pretrained_model_path: "/path/to/pretrained/Latte/" # Please download pre-trained models from https://huggingface.co/maxin-cn/Latte/tree/main
+data_path: "/mnt/shared-storage-gpfs1/ailab-sys/yangzhenyu/models/latte/data/ffs/train/videos/"
+pretrained_model_path: "/mnt/shared-storage-gpfs1/ailab-sys/yangzhenyu/models/latte/latte_ckpt/maxin-cn/Latte-1"
 
 # save and load
 results_dir: "./results"
-pretrained:
+pretrained: "/mnt/shared-storage-gpfs1/ailab-sys/yangzhenyu/models/latte/latte_ckpt/maxin-cn/Latte/ffs.pt"
 
 # model config: 
 model: Latte-XL/2
@@ -28,7 +28,7 @@ start_clip_iter: 20000
 local_batch_size: 5 # important
 max_train_steps: 1000000
 global_seed: 3407
-num_workers: 8
+num_workers: 0 # Avoid AF_UNIX socket path limits in managed remote runtime paths.
 log_every: 100
 lr_warmup_steps: 0
 resume_from_checkpoint:

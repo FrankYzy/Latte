@@ -94,13 +94,22 @@ git clone https://github.com/Vchitect/Latte
 cd Latte
 ```
 
-We provide an [`environment.yml`](environment.yml) file that can be used to create a Conda environment. If you only want 
-to run pre-trained models locally on CPU, you can remove the `cudatoolkit` and `pytorch-cuda` requirements from the file.
+The Python environment is managed with [uv](https://docs.astral.sh/uv/). Install uv, then create or synchronize the
+project-local `.venv` from `pyproject.toml` and `uv.lock`:
 
 ```bash
-conda env create -f environment.yml
-conda activate latte
+uv sync --frozen
 ```
+
+Run commands inside the managed environment with `uv run`, for example:
+
+```bash
+uv run python sample/sample.py --config ./configs/ffs/ffs_sample.yaml
+uv run bash train_scripts/ffs_train_4gpu.sh
+```
+
+On Linux, the project uses the official PyTorch CUDA 11.8 wheel index by default. A legacy
+[`environment.yml`](environment.yml) is retained only as a migration reference.
 
 
 ## Sampling 

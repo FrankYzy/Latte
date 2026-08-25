@@ -1,0 +1,43 @@
+[project]
+name = "latte-video-generation"
+version = "0.1.0"
+description = "Latent Diffusion Transformer for Video Generation"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "accelerate>=0.24,<1",
+    "av",
+    "beautifulsoup4",
+    "diffusers[torch]==0.24.0",
+    "einops",
+    "ftfy",
+    "huggingface-hub>=0.19.4,<0.26",
+    "imageio-ffmpeg",
+    "numpy<2",
+    "omegaconf",
+    "pandas",
+    "pillow",
+    "scikit-image",
+    "sentencepiece",
+    "tensorboard",
+    "timm",
+    "torch>2.0.0",
+    "torchvision",
+    "transformers>=4.35,<4.46",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu118", marker = "sys_platform == 'linux'" },
+]
+torchvision = [
+    { index = "pytorch-cu118", marker = "sys_platform == 'linux'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true

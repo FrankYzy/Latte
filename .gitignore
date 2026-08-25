@@ -1,4 +1,5 @@
 .vscode
+.tmux-remote-gpu/
 preprocess
 results
 results_img
