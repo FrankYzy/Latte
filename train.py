@@ -192,14 +192,7 @@ def main(args):
         resume_step = train_steps % num_update_steps_per_epoch
 
     if args.pretrained:
-        pretrained_stem = os.path.splitext(os.path.basename(args.pretrained))[0]
-        if pretrained_stem.isdigit():
-            train_steps = int(pretrained_stem)
-        else:
-            logger.info(
-                f"Pretrained checkpoint name '{pretrained_stem}' does not encode a "
-                "numeric training step; starting from step 0."
-            )
+        train_steps = int(args.pretrained.split("/")[-1].split('.')[0])
 
     for epoch in range(first_epoch, num_train_epochs):
         sampler.set_epoch(epoch)
