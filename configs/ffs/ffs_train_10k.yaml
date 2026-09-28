@@ -31,7 +31,7 @@ global_seed: 3407
 num_workers: 8
 log_every: 100
 log_step_metrics: True # write per-step loss, step time and peak memory to step_metrics.jsonl
-read_sampled_frames_only: True # read only the 16 sampled frames; verified identical to the full read (see devlog.md)
+read_sampled_frames_only: True # read only the 16 sampled frames; verified identical to the full read (see CHANGELOG.md)
 lr_warmup_steps: 0
 resume_from_checkpoint:
 gradient_accumulation_steps: 1 # TODO

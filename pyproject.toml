@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10,<3.13"
 dependencies = [
     "accelerate>=0.24,<1",
-    "av>=13,<14", # av 18 (FFmpeg 8) allocates a threaded SwsContext per frame in read_video; see devlog.md
+    "av>=13,<14", # av 18 (FFmpeg 8) allocates a threaded SwsContext per frame in read_video; see CHANGELOG.md
     "beautifulsoup4",
     "decord",
     "diffusers[torch]==0.24.0",

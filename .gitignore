@@ -10,3 +10,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 results_bench
+.h-cluster-rjob/
+train_scripts/*_rjob.sh
+devlog.md
