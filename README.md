@@ -105,7 +105,7 @@ Run commands inside the managed environment with `uv run`, for example:
 
 ```bash
 uv run python sample/sample.py --config ./configs/ffs/ffs_sample.yaml
-uv run bash train_scripts/ffs_train_4gpu.sh
+uv run bash train_scripts/ffs_train_8gpu.sh
 ```
 
 On Linux, the project uses the official PyTorch CUDA 11.8 wheel index by default. A legacy

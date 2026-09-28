@@ -141,17 +141,26 @@ class FaceForensics(torch.utils.data.Dataset):
         self.temporal_sample = temporal_sample
         self.target_video_len = self.configs.num_frames
         self.v_decoder = DecordInit()
+        # Read only the sampled frames instead of the whole video; frames and random draws are unchanged.
+        self.read_sampled_frames_only = configs.get("read_sampled_frames_only", False)
 
     def __getitem__(self, index):
         path = self.video_lists[index]
-        vframes, aframes, info = torchvision.io.read_video(filename=path, pts_unit='sec', output_format='TCHW')
-        total_frames = len(vframes)
+        if self.read_sampled_frames_only:
+            v_reader = self.v_decoder(path)
+            total_frames = len(v_reader)
+        else:
+            vframes, aframes, info = torchvision.io.read_video(filename=path, pts_unit='sec', output_format='TCHW')
+            total_frames = len(vframes)
         
         # Sampling video frames
         start_frame_ind, end_frame_ind = self.temporal_sample(total_frames)
         assert end_frame_ind - start_frame_ind >= self.target_video_len
         frame_indice = np.linspace(start_frame_ind, end_frame_ind-1, self.target_video_len, dtype=int)
-        video = vframes[frame_indice]
+        if self.read_sampled_frames_only:
+            video = torch.from_numpy(v_reader.get_batch(frame_indice).asnumpy()).permute(0, 3, 1, 2) # THWC -> TCHW
+        else:
+            video = vframes[frame_indice]
         # videotransformer data proprecess
         video = self.transform(video) # T C H W
         return {'video': video, 'video_name': 1}

@@ -15,6 +15,7 @@ torch.backends.cudnn.allow_tf32 = True
 
 import io
 import os
+import json
 import math
 import argparse
 
@@ -171,6 +172,14 @@ def main(args):
     first_epoch = 0
     start_time = time()
 
+    # Per-step metrics for baseline comparison (loss, step time, peak memory), one JSON line per step on rank 0.
+    log_step_metrics = args.get("log_step_metrics", False)
+    step_metrics_file = None
+    if log_step_metrics and rank == 0:
+        step_metrics_path = os.path.join(experiment_dir, "step_metrics.jsonl")
+        step_metrics_file = open(step_metrics_path, "a", buffering=1)
+        logger.info(f"Writing per-step metrics to {step_metrics_path}")
+
     # We need to recalculate our total training steps as the size of the training dataloader may have changed.
     num_update_steps_per_epoch = math.ceil(len(loader))
     # Afterwards we recalculate our number of training epochs
@@ -194,12 +203,17 @@ def main(args):
     if args.pretrained:
         train_steps = int(args.pretrained.split("/")[-1].split('.')[0])
 
+    step_start_time = time()
     for epoch in range(first_epoch, num_train_epochs):
         sampler.set_epoch(epoch)
         for step, video_data in enumerate(loader):
             # Skip steps until we reach the resumed step
             if args.resume_from_checkpoint and epoch == first_epoch and step < resume_step:
                 continue
+
+            if log_step_metrics:
+                data_ready_time = time()
+                torch.cuda.reset_peak_memory_stats(device)
 
             x = video_data['video'].to(device, non_blocking=True)
             video_name = video_data['video_name']
@@ -233,6 +247,40 @@ def main(args):
                 opt.step()
                 opt.zero_grad()
                 update_ema(ema, model.module)
+                optimizer_stepped = True
+            else:
+                optimizer_stepped = False
+
+            if log_step_metrics:
+                torch.cuda.synchronize(device)
+                step_end_time = time()
+                loss_mean = loss.detach().clone()
+                dist.all_reduce(loss_mean, op=dist.ReduceOp.SUM)
+                # Times and peak memory are reported as the max over ranks.
+                rank_stats = torch.tensor([
+                    data_ready_time - step_start_time,
+                    step_end_time - data_ready_time,
+                    step_end_time - step_start_time,
+                    torch.cuda.max_memory_allocated(device) / 2**20,
+                    torch.cuda.max_memory_reserved(device) / 2**20,
+                ], device=device, dtype=torch.float64)
+                dist.all_reduce(rank_stats, op=dist.ReduceOp.MAX)
+                if step_metrics_file is not None:
+                    data_time, compute_time, step_time, max_alloc_mib, max_reserved_mib = rank_stats.tolist()
+                    step_metrics_file.write(json.dumps({
+                        "step": train_steps,
+                        "epoch": epoch,
+                        "wall_time": step_end_time,
+                        "loss": loss_mean.item() / dist.get_world_size(),
+                        "grad_norm": float(gradient_norm),
+                        "lr": opt.param_groups[0]["lr"],
+                        "optimizer_stepped": optimizer_stepped,
+                        "data_time_s": data_time,
+                        "compute_time_s": compute_time,
+                        "step_time_s": step_time,
+                        "max_mem_allocated_mib": max_alloc_mib,
+                        "max_mem_reserved_mib": max_reserved_mib,
+                    }) + "\n")
 
             # Log loss values:
             running_loss += loss.item()
@@ -269,6 +317,13 @@ def main(args):
                     torch.save(checkpoint, checkpoint_path)
                     logger.info(f"Saved checkpoint to {checkpoint_path}")
                 dist.barrier()
+
+            if log_step_metrics:
+                # Measurement and checkpoint overhead above is excluded from the next step's times.
+                step_start_time = time()
+
+    if step_metrics_file is not None:
+        step_metrics_file.close()
 
     model.eval()  # important! This disables randomized embedding dropout
     # do any sampling/FID calculation/etc. with ema (or model) in eval mode ...
