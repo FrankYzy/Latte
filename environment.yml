@@ -18,6 +18,7 @@ dependencies:
     - transformers
     - av
     - scikit-image
+    - decord
     - pandas
     - imageio-ffmpeg
     - sentencepiece

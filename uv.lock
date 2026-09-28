@@ -47,57 +47,34 @@ sdist = { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packag
 
 [[package]]
 name = "av"
-version = "17.1.0"
+version = "13.1.0"
 source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }
-resolution-markers = [
-    "python_full_version < '3.11' and sys_platform == 'linux'",
-    "python_full_version < '3.11' and sys_platform != 'linux'",
-]
-sdist = { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0.tar.gz", hash = "sha256:7f1e71ff621b66253333926f948e00faae11d855b2442133c65128bca64cdeb3" }
+sdist = { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0.tar.gz", hash = "sha256:d3da736c55847d8596eb8c26c60e036f193001db3bc5c10da8665622d906c17e" }
 wheels = [
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp310-cp310-macosx_11_0_x86_64.whl", hash = "sha256:19c84fd72af5ef81a20f18fbc6f9aedff9e1455e53a7062c1d4c95926d73da4e" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp310-cp310-macosx_14_0_arm64.whl", hash = "sha256:19264c9bb4bee404accc7ce9ec461f2044b7f577a70234d29aafde31ed17de46" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp310-cp310-manylinux_2_28_aarch64.whl", hash = "sha256:22dff0ae582d10ef08c75c2150a4fd27cfc26653b54930c7c27b9f7b3aa20723" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp310-cp310-manylinux_2_28_x86_64.whl", hash = "sha256:90c49bc9608377d01e82e747377505419a229464873341db18202d5dddecce5a" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp310-cp310-manylinux_2_31_armv7l.whl", hash = "sha256:cc5a5247622cb77e24c342364eb68f88c1442ddfaab60c1f1f483359d3cc7879" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp310-cp310-musllinux_1_2_aarch64.whl", hash = "sha256:ff457ed419348e5b8e8c811d341389b052c5e4d5839da3794d019b125b9fe830" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp310-cp310-musllinux_1_2_armv7l.whl", hash = "sha256:1370b11a697eb3f2555906f8ab3519b0cfe48425d7830a3996ad42e6bffafda5" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:3dcd41e53f53f9a3260751d9c3c11d34e93d70d61e506c81f13dbc1e3606e07b" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp310-cp310-win_amd64.whl", hash = "sha256:3453b06075c7bb973fdb6de52563f7692ff05cbc64c0bb45f4fd6e8709131f2f" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp311-abi3-macosx_11_0_x86_64.whl", hash = "sha256:ad7b4aa011093324b7118245f50ac6db244cfe9900d4072508a5245a2b0d3f41" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp311-abi3-macosx_14_0_arm64.whl", hash = "sha256:43ebbe977f19a7f2d2bd1a4e119675a0b15e05852cf7309846b6ab922ba7ffe9" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp311-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:6a20658ec7d96a70e14b1196eff00b7cdd8831ac3b99868e16b8ba8b24090847" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp311-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:f9a65d1f48b818323fb411e80358f89d77dec340b01d27c6b2dfbb9cbf4b779f" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp311-abi3-manylinux_2_31_armv7l.whl", hash = "sha256:58f7593726437cda5bd19793027e027768450b5c4a594777bf487798a33db702" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp311-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:bbab058bd965309f39962e53caac8126987c68c0be094fc4f9427e5615b0218f" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp311-abi3-musllinux_1_2_armv7l.whl", hash = "sha256:9514cfda85180554c430695282faf4be3ffdf95775d8519733821244eecb58e0" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp311-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:e1c90f85cd7431ede95b11e8e711571a896ebea433f298849c2c0f1594c8d86e" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp311-abi3-win_amd64.whl", hash = "sha256:5df5c1172ef1cf65a1529d612f7da7798ce2cf82c1ff7212466b538a6cc7214c" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/17.1.0/av-17.1.0-cp311-abi3-win_arm64.whl", hash = "sha256:ee98534242a74da847af78624779ac5a3177dc7c69f956a4da9e6f0fdb37d7f6" },
-]
-
-[[package]]
-name = "av"
-version = "18.1.0"
-source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }
-resolution-markers = [
-    "python_full_version >= '3.12' and sys_platform == 'linux'",
-    "python_full_version == '3.11.*' and sys_platform == 'linux'",
-    "python_full_version >= '3.11' and sys_platform == 'win32'",
-    "python_full_version >= '3.11' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.11' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-]
-sdist = { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/18.1.0/av-18.1.0.tar.gz", hash = "sha256:47bfc286e1bc9de7ab4681fc2b575cd2460a66919d31ffe1bd5aa54fae531a28" }
-wheels = [
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/18.1.0/av-18.1.0-cp311-abi3-macosx_11_0_x86_64.whl", hash = "sha256:ae75d8bb6467895ed1f8572ededf7ffa49eac07f6e483222f5d7d62a41d12f04" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/18.1.0/av-18.1.0-cp311-abi3-macosx_14_0_arm64.whl", hash = "sha256:b30a4e8d934558e19602b68998a4d9ac9f250fa0dacef216f7e8e40153b13316" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/18.1.0/av-18.1.0-cp311-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:6fc837cc51adf80331ac850779cd53b5d4c4460b0ebe9057a02a921c6736f19d" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/18.1.0/av-18.1.0-cp311-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:8a032e8d8ebc73dec079364b9b4a6837638a2d106e8472314e685ffbf163e700" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/18.1.0/av-18.1.0-cp311-abi3-manylinux_2_31_armv7l.whl", hash = "sha256:3c8b1f8b46f99d52e2d8b0ed5d0cdadf172d24794d46e2077b16e44ed08e26ff" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/18.1.0/av-18.1.0-cp311-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:ab5ac081bc9eaf54109120d4e56284674fecfbe520d9aa1707c7fa911ec5f4d2" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/18.1.0/av-18.1.0-cp311-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:191224788d87af06c31784a395bb73f14b72f33d7f4871ace0157de2abdc6276" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/18.1.0/av-18.1.0-cp311-abi3-win_amd64.whl", hash = "sha256:ea1480b7a8d5405cb5f382b344731bf125fd2c1c6fae3964f6c48595628387ff" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/18.1.0/av-18.1.0-cp311-abi3-win_arm64.whl", hash = "sha256:5509ec12aaa19fd6601de13cfa6f4cdad450da07982118510592875d970454d6" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp310-cp310-macosx_10_13_x86_64.whl", hash = "sha256:a2af44fae6d16c3a40dd1c85bda41b449be08a2c172d8f44fb63395ccf6e6fb4" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:0fea71fe06fd0dfe90a089200eb6468034797f860a321fa2d62e07d619c74749" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:756997810dcca11811b598d209561cabd2071e5b472b867c295bb3e7022eecde" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp310-cp310-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:7f432102edaec4ee90087a675acf486bff0c81b47d98b85eb3218afe84575b60" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:1d568c4d7a36df52c0774d52e6d730148775ead16daed81c10dafc2569b5a38d" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp310-cp310-win_amd64.whl", hash = "sha256:aa6f76e7c5e77bc5f99a27ada29f78c64fd4e0d42da2c4d203badc650bc0a686" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp311-cp311-macosx_10_13_x86_64.whl", hash = "sha256:867385e6701464a5c95903e24d2e0df1c7e0dbf211ed91d0ce639cd687373e10" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:cb7a3f319401a46b0017771268ff4928501e77cf00b1a2aa0721e20b2fd1146e" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:ad904f860147bceaca65b0d3174a8153f35c570d465161d210f1879970b15559" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp311-cp311-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:a906e017b29d0eb80d9ccf7a98d19268122da792dbb68eb741cfebba156e6aed" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:5ce894d7847897da7be63277a0875bd93c51327134ac226c67978de014c7979f" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp311-cp311-win_amd64.whl", hash = "sha256:384bcdb5fc3238a263a5a25cc9efc690859fa4148cc4b07e00fae927178db22a" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:261dbc3f4b55f4f8f3375b10b2258fca7f2ab7a6365c01bc65e77a0d5327a195" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:83d259ef86b9054eb914bc7c6a7f6092a6d75cb939295e70ee979cfd92a67b99" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f3b4d3ca159eceab97e3c0fb08fe756520fb95508417f76e48198fda2a5b0806" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp312-cp312-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:40e8f757e373b73a2dc4640852a00cce4a4a92ef19b2e642a96d6994cd1fffbf" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d8aaec2c0bfd024359db3821d679009d4e637e1bee0321d20f61c54ed6b20f41" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-cp312-cp312-win_amd64.whl", hash = "sha256:5ea0deab0e6a739cb742fba2a3983d8102f7516a3cdf3c46669f3cac0ed1f351" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-pp310-pypy310_pp73-macosx_10_15_x86_64.whl", hash = "sha256:fc5118f78ee712b2c396f345e4c51e60e61e28f1f606adbd4060c4dc44b0b652" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-pp310-pypy310_pp73-macosx_11_0_arm64.whl", hash = "sha256:81bcbd3545e523e7a350613be1866b515a5ee3fafa1d9d257d7ed02531fc2636" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-pp310-pypy310_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:83b2bc641e8e16bbf058de35f1ba79ebed358ac6fe3cb5a665366294774fdb18" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-pp310-pypy310_pp73-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:d956ae3e68fabdc45eb2b986c2e842a31df084d8cfc90336509f07a727a9df62" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-pp310-pypy310_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2ef076fcdf172aafcb21ea3ef7bd68cc9151b050016a8ace13b3dae3d08a4427" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/av/13.1.0/av-13.1.0-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:bbf90397b7a466ff2879bd0944d55f796ad76c073fce50304315b83ad00113bd" },
 ]
 
 [[package]]
@@ -198,10 +175,21 @@ wheels = [
 [[package]]
 name = "colorama"
 version = "0.4.6"
-source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }
-sdist = { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/colorama/0.4.6/colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44" }
+source = { registry = "http://pypi.i.h.pjlab.org.cn/brain/dev/+simple" }
 wheels = [
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/colorama/0.4.6/colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6" },
+    { url = "http://pypi.i.h.pjlab.org.cn/brain/dev/+f/4f1/d9991f5acc0ca/colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6" },
+]
+
+[[package]]
+name = "decord"
+version = "0.6.0"
+source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+wheels = [
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/decord/0.6.0/decord-0.6.0-py3-none-manylinux2010_x86_64.whl", hash = "sha256:51997f20be8958e23b7c4061ba45d0efcd86bffd5fe81c695d0befee0d442976" },
+    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/decord/0.6.0/decord-0.6.0-py3-none-win_amd64.whl", hash = "sha256:02665d7c4f1193a330205a791bc128f7e108eb6ae5b67144437a02f700943bad" },
 ]
 
 [[package]]
@@ -379,13 +367,12 @@ wheels = [
 [[package]]
 name = "jinja2"
 version = "3.1.6"
-source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }
+source = { registry = "http://pypi.i.h.pjlab.org.cn/brain/dev/+simple" }
 dependencies = [
     { name = "markupsafe" },
 ]
-sdist = { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/jinja2/3.1.6/jinja2-3.1.6.tar.gz", hash = "sha256:0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d" }
 wheels = [
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/jinja2/3.1.6/jinja2-3.1.6-py3-none-any.whl", hash = "sha256:85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67" },
+    { url = "http://pypi.i.h.pjlab.org.cn/brain/dev/+f/85e/ce4451f492d0c/jinja2-3.1.6-py3-none-any.whl", hash = "sha256:85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67" },
 ]
 
 [[package]]
@@ -394,9 +381,9 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "accelerate" },
-    { name = "av", version = "17.1.0", source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "av", version = "18.1.0", source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "av" },
     { name = "beautifulsoup4" },
+    { name = "decord" },
     { name = "diffusers", extra = ["torch"] },
     { name = "einops" },
     { name = "ftfy" },
@@ -422,8 +409,9 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "accelerate", specifier = ">=0.24,<1" },
-    { name = "av" },
+    { name = "av", specifier = ">=13,<14" },
     { name = "beautifulsoup4" },
+    { name = "decord" },
     { name = "diffusers", extras = ["torch"], specifier = "==0.24.0" },
     { name = "einops" },
     { name = "ftfy" },
@@ -509,10 +497,9 @@ wheels = [
 [[package]]
 name = "mpmath"
 version = "1.3.0"
-source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }
-sdist = { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/mpmath/1.3.0/mpmath-1.3.0.tar.gz", hash = "sha256:7a28eb2a9774d00c7bc92411c19a89209d5da7c4c9a9e227be8330a23a25b91f" }
+source = { registry = "http://pypi.i.h.pjlab.org.cn/brain/dev/+simple" }
 wheels = [
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/mpmath/1.3.0/mpmath-1.3.0-py3-none-any.whl", hash = "sha256:a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c" },
+    { url = "http://pypi.i.h.pjlab.org.cn/brain/dev/+f/a0b/2b9fe80bbcd81/mpmath-1.3.0-py3-none-any.whl", hash = "sha256:a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c" },
 ]
 
 [[package]]
@@ -851,13 +838,12 @@ wheels = [
 [[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
-source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }
+source = { registry = "http://pypi.i.h.pjlab.org.cn/brain/dev/+simple" }
 dependencies = [
     { name = "six" },
 ]
-sdist = { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/python-dateutil/2.9.0.post0/python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3" }
 wheels = [
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/python-dateutil/2.9.0.post0/python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427" },
+    { url = "http://pypi.i.h.pjlab.org.cn/brain/dev/+f/a8b/2bc7bffae2822/python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427" },
 ]
 
 [[package]]
@@ -1200,10 +1186,9 @@ wheels = [
 [[package]]
 name = "six"
 version = "1.17.0"
-source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }
-sdist = { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/six/1.17.0/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81" }
+source = { registry = "http://pypi.i.h.pjlab.org.cn/brain/dev/+simple" }
 wheels = [
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/six/1.17.0/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274" },
+    { url = "http://pypi.i.h.pjlab.org.cn/brain/dev/+f/472/1f391ed90541f/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274" },
 ]
 
 [[package]]
@@ -1218,13 +1203,12 @@ wheels = [
 [[package]]
 name = "sympy"
 version = "1.14.0"
-source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }
+source = { registry = "http://pypi.i.h.pjlab.org.cn/brain/dev/+simple" }
 dependencies = [
     { name = "mpmath" },
 ]
-sdist = { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/sympy/1.14.0/sympy-1.14.0.tar.gz", hash = "sha256:d3d3fe8df1e5a0b42f0e7bdf50541697dbe7d23746e894990c030e2b05e72517" }
 wheels = [
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/sympy/1.14.0/sympy-1.14.0-py3-none-any.whl", hash = "sha256:e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5" },
+    { url = "http://pypi.i.h.pjlab.org.cn/brain/dev/+f/e09/1cc3e99d2141a/sympy-1.14.0-py3-none-any.whl", hash = "sha256:e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5" },
 ]
 
 [[package]]
@@ -1510,14 +1494,14 @@ wheels = [
 [[package]]
 name = "triton"
 version = "3.3.1"
-source = { registry = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/simple" }
+source = { registry = "http://pypi.i.h.pjlab.org.cn/brain/dev/+simple" }
 dependencies = [
     { name = "setuptools", marker = "sys_platform == 'linux'" },
 ]
 wheels = [
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/triton/3.3.1/triton-3.3.1-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:b74db445b1c562844d3cfad6e9679c72e93fdfb1a90a24052b03bb5c49d1242e" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/triton/3.3.1/triton-3.3.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:b31e3aa26f8cb3cc5bf4e187bf737cbacf17311e1112b781d4a059353dfd731b" },
-    { url = "http://mirrors.i.h.pjlab.org.cn/repository/pypi-tsinghua/packages/triton/3.3.1/triton-3.3.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:9999e83aba21e1a78c1f36f21bce621b77bcaa530277a50484a7cb4a822f6e43" },
+    { url = "http://pypi.i.h.pjlab.org.cn/brain/dev/+f/b74/db445b1c56284/triton-3.3.1-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:b74db445b1c562844d3cfad6e9679c72e93fdfb1a90a24052b03bb5c49d1242e" },
+    { url = "http://pypi.i.h.pjlab.org.cn/brain/dev/+f/b31/e3aa26f8cb3cc/triton-3.3.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:b31e3aa26f8cb3cc5bf4e187bf737cbacf17311e1112b781d4a059353dfd731b" },
+    { url = "http://pypi.i.h.pjlab.org.cn/brain/dev/+f/999/9e83aba21e1a7/triton-3.3.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:9999e83aba21e1a78c1f36f21bce621b77bcaa530277a50484a7cb4a822f6e43" },
 ]
 
 [[package]]
