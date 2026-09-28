@@ -13,3 +13,4 @@ results_bench
 .h-cluster-rjob/
 train_scripts/*_rjob.sh
 devlog.md
+bench/*_rjob.sh

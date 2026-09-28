@@ -18,7 +18,8 @@
 | `configs/ffs/ffs_train.yaml` | 数据和 VAE 路径改为本地路径；`pretrained` 置空（与官方一致，从头训练）；打开上述两个开关；`max_train_steps` 1000000 → 1000、`ckpt_every` 10000 → 1000，用于短程收敛观察 | 否（步数只决定训练长度） |
 | `configs/ffs/ffs_train_10k.yaml` | 1 万步基线配置，与 `ffs_train.yaml` 只差 `max_train_steps: 10000`、`ckpt_every: 10000` 和 `results_dir` | 否 |
 | `train_scripts/ffs_train_8gpu.sh` | 单机 8 卡 `torchrun` 启动脚本，与官方 `slurm_scripts/ffs.slurm` 的单机 8 卡设置一致；可用环境变量 `LATTE_CONFIG` 指定配置、`LATTE_CUDA_DEVICES` 指定 GPU | 否 |
-| `.gitignore` | 忽略本地开发记录和集群专用文件：`.tmux-remote-gpu/`、`.h-cluster-rjob/`、`train_scripts/*_rjob.sh`、`devlog.md`、`results_bench` | 否 |
+| `bench/verify_ffs_frame_reading.py` | 验证 `read_sampled_frames_only` 与官方读取逐字节一致，并记录两种方式的读取耗时；纯 CPU | 否（不参与训练） |
+| `.gitignore` | 忽略本地开发记录和集群专用文件：`.tmux-remote-gpu/`、`.h-cluster-rjob/`、`train_scripts/*_rjob.sh`、`bench/*_rjob.sh`、`devlog.md`、`results_bench` | 否 |
 
 官方 dataset 文件（除上述开关外）和 `train.py` 的训练逻辑保持原样。
 
@@ -46,6 +47,13 @@
 
 - PyAV 18（FFmpeg 8）在 `read_video` 中为每一帧新建一个多线程的 `SwsContext`，并在帧释放前一直保留，线程和内存随帧数累积；读取 780 帧的视频时，7 核机器上会累计约 4858 个线程而失败。PyAV 将修复列在尚未发布的 v19。因此 `av` 固定为 13.1.0。
 - `read_sampled_frames_only` 用 decord 只解码采样的 16 帧。对全部 704 个训练视频（363,313 帧）核实：decord 读出的每一帧与官方 `read_video`（av 13.1.0）逐字节相等，帧数一致；相同随机种子下 `__getitem__` 的输出完全相等。单样本读取耗时中位数从 0.116 s 降到 0.047 s。
+- 逐字节一致依赖当前的 av 和 decord 版本（两者的 yuv420p 转 RGB 实现不同）。升级 av 或 decord 后，需要重新运行 `bench/verify_ffs_frame_reading.py` 确认：
+
+  ```bash
+  uv run python bench/verify_ffs_frame_reading.py --config ./configs/ffs/ffs_train.yaml --processes 16
+  ```
+
+  结果写入 `results_bench/ffs_frame_reading/<时间>/summary.json`，`passed` 为 `true` 表示通过。
 
 两项改动合计效果（8 × H200，每卡 batch 5）：
 
