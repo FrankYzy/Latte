@@ -17,8 +17,10 @@
 | `datasets/ffs_datasets.py` | 新增 `read_sampled_frames_only` 开关（默认关闭）：用 decord 只读取采样的 16 帧，不再读取整段视频 | 否，已验证与官方读取逐字节一致 |
 | `configs/ffs/ffs_train.yaml` | 数据和 VAE 路径改为本地路径；`pretrained` 置空（与官方一致，从头训练）；打开上述两个开关；`max_train_steps` 1000000 → 1000、`ckpt_every` 10000 → 1000，用于短程收敛观察 | 否（步数只决定训练长度） |
 | `configs/ffs/ffs_train_10k.yaml` | 1 万步基线配置，与 `ffs_train.yaml` 只差 `max_train_steps: 10000`、`ckpt_every: 10000` 和 `results_dir` | 否 |
+| `configs/ffs/ffs_sample.yaml` | VAE 路径（`pretrained_model_path`）改为本地路径，其余保持官方采样设置 | 否 |
 | `train_scripts/ffs_train_8gpu.sh` | 单机 8 卡 `torchrun` 启动脚本，与官方 `slurm_scripts/ffs.slurm` 的单机 8 卡设置一致；可用环境变量 `LATTE_CONFIG` 指定配置、`LATTE_CUDA_DEVICES` 指定 GPU | 否 |
 | `bench/verify_ffs_frame_reading.py` | 验证 `read_sampled_frames_only` 与官方读取逐字节一致，并记录两种方式的读取耗时；纯 CPU | 否（不参与训练） |
+| `baseline_results/ffs/` | FFS 基线结果数据，见下文"基线结果" | 否（不参与训练） |
 | `.gitignore` | 忽略本地开发记录和集群专用文件：`.tmux-remote-gpu/`、`.h-cluster-rjob/`、`train_scripts/*_rjob.sh`、`bench/*_rjob.sh`、`devlog.md`、`results_bench` | 否 |
 
 官方 dataset 文件（除上述开关外）和 `train.py` 的训练逻辑保持原样。
@@ -125,13 +127,25 @@ LATTE_CUDA_DEVICES=8,9,10,11,12,13,14,15 uv run bash train_scripts/ffs_train_8gp
 
 | 项目 | 结果 |
 | --- | --- |
-| 1000 步 loss | 约 0.97 → 0.12 |
-| 端到端每步耗时 | 0.669 s |
-| 等数据时间占比 | 11.5% |
-| 纯计算每步耗时 | 约 0.59 s |
-| 可复现性 | 相同配置和种子在不同节点上运行，逐步 loss 完全相等（已比较前 92 步） |
+| loss（100 步滑动平均） | 第 1000 步 0.122，第 1 万步 0.095 |
+| 端到端每步耗时 | 0.674 s |
+| 等数据时间占比 | 10.8% |
+| 纯计算每步耗时 | 0.592 s |
+| 峰值显存（已分配 / 保留） | 69,840 / 75,756 MiB |
+| 可复现性 | 相同配置和种子在不同节点上运行，前 1000 步的逐步 loss 完全相等 |
 
-在当前环境下，逐步 loss 可以用"差值为 0"判断是否对齐；估计随机波动范围时需要改变 `global_seed`。
+在当前环境下，逐步 loss 可以用"差值为 0"判断是否对齐；估计随机波动范围时需要改变 `global_seed`。完整数据见下文"基线结果"。
+
+## 基线结果
+
+`baseline_results/ffs/` 保存 FFS 基线的原始数据和由其生成的图表，运行条件、结果和使用建议见该目录的 [`README.md`](baseline_results/ffs/README.md)：
+
+| 路径 | 内容 |
+| --- | --- |
+| `run_10k/` | 1 万步基线（`configs/ffs/ffs_train_10k.yaml`）的 `step_metrics.jsonl`、`log.txt`、`config.yaml`、`loss_curve.png` |
+| `run_1k/` | 1000 步运行（`configs/ffs/ffs_train.yaml`）的同类文件 |
+| `samples_10k_model/` | 用 1 万步 checkpoint 的非 EMA 权重生成的视频 `sample_*.mp4` 及帧拼图 `frames_*.png` |
+| `summary.json`、`scripts/make_figures.py` | 统计结果，以及从原始数据重新生成统计和图表的脚本 |
 
 ## 运行环境
 
@@ -157,4 +171,5 @@ LATTE_CUDA_DEVICES=8,9,10,11,12,13,14,15 uv run bash train_scripts/ffs_train_8gp
 - 第 0 步只做反向、不更新参数（`opt.step()` 的条件是 `train_steps > 0`），第 0、1 步的梯度累加后才第一次更新。
 - `start_clip_iter: 20000`：前 2 万步只计算梯度范数，不裁剪。
 - `mixed_precision`、xformers、`use_compile` 均关闭，全程 FP32（开启 TF32）。
+- 短训练的 EMA 权重不可用：EMA 用 `update_ema(ema, model.module, decay=0)` 初始化为随机初始权重，之后每步按 0.9999 衰减，1 万步时仍有约 37%（0.9999^10000）来自随机初始权重，用它推理只得到噪声。短训练的推理应使用 `model` 权重；对比 EMA 实现时应直接比较 EMA 参数。
 - 官方未给出 FFS 的训练步数；1000 步和 1 万步是本分支为对比设定的长度。

@@ -1,0 +1,111 @@
+{
+  "run_10k": {
+    "steps": 10013,
+    "loss_by_segment": [
+      {
+        "steps": "0-99",
+        "mean": 0.3045,
+        "std": 0.2562
+      },
+      {
+        "steps": "100-999",
+        "mean": 0.13,
+        "std": 0.0399
+      },
+      {
+        "steps": "1000-1999",
+        "mean": 0.1119,
+        "std": 0.0363
+      },
+      {
+        "steps": "2000-2999",
+        "mean": 0.1052,
+        "std": 0.0348
+      },
+      {
+        "steps": "3000-3999",
+        "mean": 0.1057,
+        "std": 0.0369
+      },
+      {
+        "steps": "4000-4999",
+        "mean": 0.0988,
+        "std": 0.033
+      },
+      {
+        "steps": "5000-5999",
+        "mean": 0.0979,
+        "std": 0.0324
+      },
+      {
+        "steps": "6000-6999",
+        "mean": 0.0985,
+        "std": 0.0341
+      },
+      {
+        "steps": "7000-7999",
+        "mean": 0.0952,
+        "std": 0.0315
+      },
+      {
+        "steps": "8000-8999",
+        "mean": 0.0937,
+        "std": 0.0325
+      },
+      {
+        "steps": "9000-10012",
+        "mean": 0.0918,
+        "std": 0.0309
+      }
+    ],
+    "wall_time_h": 1.875,
+    "wall_time_per_step_s": 0.6742,
+    "compute_time_median_s": 0.5917,
+    "data_wait_share": 0.1084,
+    "max_mem_allocated_mib": 69840,
+    "max_mem_reserved_mib": 75756,
+    "loss_ma100_last": 0.0954
+  },
+  "run_1k": {
+    "steps": 1000,
+    "loss_by_segment": [
+      {
+        "steps": "0-99",
+        "mean": 0.3045,
+        "std": 0.2562
+      },
+      {
+        "steps": "100-999",
+        "mean": 0.13,
+        "std": 0.0399
+      }
+    ],
+    "wall_time_h": 0.186,
+    "wall_time_per_step_s": 0.6695,
+    "compute_time_median_s": 0.592,
+    "data_wait_share": 0.1155,
+    "max_mem_allocated_mib": 69840,
+    "max_mem_reserved_mib": 75756,
+    "loss_ma50_last": 0.1204
+  },
+  "reproducibility": {
+    "compared_steps": 1000,
+    "per_step_loss_identical": true
+  },
+  "samples_10k_model": {
+    "sample_0": {
+      "frames": 16,
+      "height_width": [
+        256,
+        256
+      ]
+    },
+    "sample_1": {
+      "frames": 16,
+      "height_width": [
+        256,
+        256
+      ]
+    }
+  }
+}

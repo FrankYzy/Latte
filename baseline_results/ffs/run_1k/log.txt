@@ -1,0 +1,14 @@
+[2026-09-28 06:03:43] Experiment directory created at ./results/005-Latte-XL-2-F16S3-ffs
+[2026-09-28 06:06:43] Model Parameters: 673,994,912
+[2026-09-28 06:06:43] Dataset contains 704 videos (/mnt/shared-storage-gpfs1/ailab-sys/yangzhenyu/models/latte/data/ffs/train/videos/)
+[2026-09-28 06:06:44] Writing per-step metrics to ./results/005-Latte-XL-2-F16S3-ffs/step_metrics.jsonl
+[2026-09-28 06:07:52] (step=0000100/epoch=0005) Train Loss: 0.3045, Gradient Norm: 0.4181, Train Steps/Sec: 1.46
+[2026-09-28 06:08:59] (step=0000200/epoch=0011) Train Loss: 0.1467, Gradient Norm: 0.5380, Train Steps/Sec: 1.49
+[2026-09-28 06:10:06] (step=0000300/epoch=0017) Train Loss: 0.1409, Gradient Norm: 0.6263, Train Steps/Sec: 1.49
+[2026-09-28 06:11:14] (step=0000400/epoch=0023) Train Loss: 0.1341, Gradient Norm: 0.3186, Train Steps/Sec: 1.49
+[2026-09-28 06:12:21] (step=0000500/epoch=0029) Train Loss: 0.1349, Gradient Norm: 0.5194, Train Steps/Sec: 1.50
+[2026-09-28 06:13:28] (step=0000600/epoch=0035) Train Loss: 0.1265, Gradient Norm: 0.4125, Train Steps/Sec: 1.49
+[2026-09-28 06:14:35] (step=0000700/epoch=0041) Train Loss: 0.1216, Gradient Norm: 0.2654, Train Steps/Sec: 1.48
+[2026-09-28 06:15:42] (step=0000800/epoch=0047) Train Loss: 0.1220, Gradient Norm: 0.2496, Train Steps/Sec: 1.49
+[2026-09-28 06:16:48] (step=0000900/epoch=0052) Train Loss: 0.1217, Gradient Norm: 0.2969, Train Steps/Sec: 1.53
+[2026-09-28 06:17:55] (step=0001000/epoch=0058) Train Loss: 0.1218, Gradient Norm: 0.2267, Train Steps/Sec: 1.48
