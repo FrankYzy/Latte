@@ -21,6 +21,7 @@
 | `train_scripts/ffs_train_8gpu.sh` | 单机 8 卡 `torchrun` 启动脚本，与官方 `slurm_scripts/ffs.slurm` 的单机 8 卡设置一致；可用环境变量 `LATTE_CONFIG` 指定配置、`LATTE_CUDA_DEVICES` 指定 GPU | 否 |
 | `bench/verify_ffs_frame_reading.py` | 验证 `read_sampled_frames_only` 与官方读取逐字节一致，并记录两种方式的读取耗时；纯 CPU | 否（不参与训练） |
 | `baseline_results/ffs/` | FFS 基线结果数据，见下文"基线结果" | 否（不参与训练） |
+| `visuals/latte.gif`、`visuals/latteT2V.gif` | 删除官方演示动图（共约 36 MB），减小检出体积；`README.md` 只在注释中引用 `latteT2V.gif`，显示不受影响 | 否 |
 | `.gitignore` | 忽略本地开发记录和集群专用文件：`.tmux-remote-gpu/`、`.h-cluster-rjob/`、`train_scripts/*_rjob.sh`、`bench/*_rjob.sh`、`devlog.md`、`results_bench` | 否 |
 
 官方 dataset 文件（除上述开关外）和 `train.py` 的训练逻辑保持原样。
